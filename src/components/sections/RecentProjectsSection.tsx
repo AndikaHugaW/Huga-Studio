@@ -6,6 +6,7 @@ import Image from "next/image";
 import TextReveal from "@/components/ui/TextReveal";
 import MagneticButton from "@/components/ui/MagneticButton";
 import { GridBackground } from "@/components/ui/GridBackground";
+import { projectShimmerBlur } from "@/lib/image-placeholder";
 
 const featuredProjects = [
   {
@@ -71,21 +72,6 @@ export default function RecentProjectsSection() {
 
     return () => clearInterval(interval);
   }, []);
-
-  // Preload gambar berikutnya untuk smooth transition
-  useEffect(() => {
-    const nextIndex = (currentIndex + 1) % featuredProjects.length;
-    const nextImage = featuredProjects[nextIndex].image;
-    const link = document.createElement("link");
-    link.rel = "preload";
-    link.as = "image";
-    link.href = nextImage;
-    document.head.appendChild(link);
-
-    return () => {
-      document.head.removeChild(link);
-    };
-  }, [currentIndex]);
 
   const currentProject = featuredProjects[currentIndex];
 
@@ -163,9 +149,12 @@ export default function RecentProjectsSection() {
                 src={currentProject.image}
                 alt={currentProject.title}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1800px"
                 className="object-cover transition-transform duration-700 ease-out"
-                quality={90}
-                priority
+                quality={85}
+                priority={currentIndex === 0}
+                placeholder="blur"
+                blurDataURL={projectShimmerBlur}
               />
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/5"></div>

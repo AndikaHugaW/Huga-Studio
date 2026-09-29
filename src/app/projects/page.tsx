@@ -9,6 +9,7 @@ import ProjectModal from "@/components/ui/ProjectModal";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SearchComponent from "@/components/ui/animated-glowing-search-bar";
+import { projectShimmerBlur } from "@/lib/image-placeholder";
 
 // ─── Categories ────────────────────────────────────────────────────────────────
 
@@ -135,8 +136,10 @@ function FeaturedCard({ project, onOpen }: { project: Project; onOpen: () => voi
         alt={project.title}
         fill
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-        quality={80}
+        quality={85}
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1800px"
+        placeholder="blur"
+        blurDataURL={projectShimmerBlur}
         priority
       />
 
@@ -204,8 +207,10 @@ function GridCard({ project, index, onOpen }: { project: Project; index: number;
           alt={project.title}
           fill
           className="object-cover group-hover:scale-[1.04] transition-transform duration-600 ease-out opacity-90 group-hover:opacity-100"
-          quality={75}
+          quality={82}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          placeholder="blur"
+          blurDataURL={projectShimmerBlur}
           loading="lazy"
         />
         {/* Hover overlay */}

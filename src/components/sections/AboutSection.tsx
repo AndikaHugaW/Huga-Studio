@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
 import { CountUp } from "@/components/ui/CountUp";
+import { projectShimmerBlur } from "@/lib/image-placeholder";
 
 export default function AboutSection() {
   const containerRef = useRef(null);
@@ -132,6 +133,9 @@ export default function AboutSection() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 25vw"
+                quality={85}
+                placeholder="blur"
+                blurDataURL={projectShimmerBlur}
               />
             </motion.div>
             <motion.div 
@@ -155,6 +159,9 @@ export default function AboutSection() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 25vw"
+                quality={85}
+                placeholder="blur"
+                blurDataURL={projectShimmerBlur}
               />
             </motion.div>
             <motion.div 
@@ -178,6 +185,9 @@ export default function AboutSection() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 25vw"
+                quality={85}
+                placeholder="blur"
+                blurDataURL={projectShimmerBlur}
               />
             </motion.div>
             <motion.div 
@@ -201,6 +211,9 @@ export default function AboutSection() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 768px) 100vw, 25vw"
+                quality={85}
+                placeholder="blur"
+                blurDataURL={projectShimmerBlur}
               />
             </motion.div>
             <motion.div 

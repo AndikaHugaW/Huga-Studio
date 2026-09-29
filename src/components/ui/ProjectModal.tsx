@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import { useLenis } from "@/components/providers/SmoothScrollProvider";
 import Image from "next/image";
 import { projects, type Project } from "@/constants/projects";
+import { projectShimmerBlur } from "@/lib/image-placeholder";
 
 const formatTag = (tag: string) => {
   const tagMap: Record<string, string> = {
@@ -201,7 +202,11 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     alt={project.title}
                     width={1440}
                     height={810}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 95vw, 1440px"
                     className="w-full h-auto object-contain"
+                    quality={85}
+                    placeholder="blur"
+                    blurDataURL={projectShimmerBlur}
                     priority
                   />
                 </div>
@@ -296,7 +301,12 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                               alt={title || `${project.title} Preview ${idx + 1}`}
                               width={1440}
                               height={810}
+                              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 95vw, 1440px"
                               className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                              quality={85}
+                              loading="lazy"
+                              placeholder="blur"
+                              blurDataURL={projectShimmerBlur}
                             />
                           </div>
                           {(title || description) && (
@@ -336,7 +346,12 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                           src={rec.image}
                           alt={rec.title}
                           fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          quality={80}
+                          loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={projectShimmerBlur}
                         />
                         <div className="absolute inset-0 bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                           <span className="px-6 py-2 bg-black text-white font-bold rounded-full text-sm shadow-xl">View Work</span>

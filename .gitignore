@@ -50,6 +50,7 @@ Thumbs.db
 *.tmp
 *.temp
 .cache/
+public/images/projects/_backup_originals/
 
 # Package manager locks (optional - uncomment if you want to ignore)
 # package-lock.json

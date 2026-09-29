@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ProjectModal from "@/components/ui/ProjectModal";
 import { type Project } from "@/constants/projects";
+import { projectShimmerBlur } from "@/lib/image-placeholder";
 
 const projects = [
   {
@@ -183,12 +184,15 @@ function ProjectCard({
             alt={layout.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            priority={idx < 2}
+            placeholder="blur"
+            blurDataURL={projectShimmerBlur}
             onLoad={() => setImageLoaded(true)}
             style={{
               filter: imageLoaded ? "blur(0px)" : "blur(20px)",
             }}
             className="object-cover rounded-none transition-[filter] duration-[1000ms] ease-out group-hover:scale-[1.04] transition-transform duration-700 ease-out z-0 scale-[1.01]"
-            quality={90}
+            quality={85}
           />
         </motion.div>
       </div>
